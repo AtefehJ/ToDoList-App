@@ -1,6 +1,7 @@
 {
   "name": "es6-spread-operator-practice",
   "version": "1.0.0",
+  "homepage" : "https://atefehj.github.io/ToDoList",
   "keywords": [],
   "main": "../src/index.js",
   "dependencies": {
