@@ -1,5 +1,5 @@
 body {
-  background-color: #f8b88b;
+  background-image: url(../../public/leaves.jpeg);
   min-height: 70vh;
   padding: 1rem;
   box-sizing: border-box;
@@ -33,7 +33,7 @@ body {
 .heading h1 {
   padding: 0.2rem 1.2rem;
   border-radius: 5px;
-  background-color: #ff9657;
+  background-color: #8fbc8b;
   font-size: 1.5rem;
 }
 
@@ -44,7 +44,7 @@ body {
   border-bottom-right-radius: 15px 3px;
   border-bottom-left-radius: 3px 15px;
   border: solid 3px transparent;
-  border-bottom: dashed 3px #f45b00;
+  border-bottom: dashed 3px #006400;
   font-family: "Architects Daughter", cursive;
   font-size: 1rem;
   color: hsla(260, 2%, 25%, 0.7);
@@ -57,14 +57,19 @@ button {
   border: none;
   font-family: "Architects Daughter", cursive;
   text-decoration: none;
-  padding-bottom: 3px;
+  padding-bottom: 5px;
   border-radius: 5px;
-  /* background-color: #ff8c69; */
+  margin-left: 5px;
+}
+
+button:hover {
+  background-color: #8fbc8b;
 }
 button span {
-  background: #f1f5f8;
+  /* background: #f1f5f8; */
+  background-color: #d0f0c0;
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.8rem;
   border-radius: 5px;
   border: 2px solid hsl(198, 1%, 29%);
 }
