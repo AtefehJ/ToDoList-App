@@ -17,6 +17,7 @@ const { Pool } = require("pg");
 // app.use(express.static("./client/build"));
 
 if (process.env.NODE_ENV === "production") {
+  //server static content
   app.use(express.static(path.join(__dirname, "client/build")));
 }
 
@@ -41,7 +42,7 @@ const devConfig = {
 };
 
 const proConfig = {
-  connectionString: process.env.DATABASE_URL, // Heroku add-ons -> to connect postgres cloud service
+  connectionString: process.env.DATABASE_URL, // coming from Heroku add-ons -> connect me to the postgres cloud service
 };
 
 const db = new Pool(
@@ -116,6 +117,9 @@ app.delete("/todos/:id", async (req, res) => {
   }
 });
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build/index.html"));
+});
 // const port = 5000;
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
