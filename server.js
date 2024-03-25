@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 const app = express();
+const path = require("path");
 
 // import bodyParser from "body-parser";
 // import cors from "cors";
@@ -13,6 +14,15 @@ app.use(express.json());
 app.use(express.static("public"));
 const { Pool } = require("pg");
 
+// app.use(express.static("./client/build"));
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/build")));
+}
+
+console.log(__dirname);
+console.log(path.join(__dirname, "client/build"));
+
 //configure the PostgreSQL connection
 // const db = new Pool({
 //   user: "postgres",
@@ -22,13 +32,21 @@ const { Pool } = require("pg");
 //   port: 5432,
 // });
 
-const db = new Pool({
-  user: "postgres",
-  host: process.env.HOST,
-  password: process.env.PASSWORD,
-  port: process.env.DBPORT,
-  database: "todolist",
-});
+const devConfig = {
+  user: process.env.PG_USER,
+  host: process.env.PG_HOST,
+  password: process.env.PG_PASSWORD,
+  database: process.env.PG_DATABASE,
+  port: process.env.PG_PORT,
+};
+
+const proConfig = {
+  connectionString: process.env.DATABASE_URL, // Heroku add-ons -> to connect postgres cloud service
+};
+
+const db = new Pool(
+  process.env.NODE_ENV === "production" ? proConfig : devConfig
+);
 
 // db.connect();
 
@@ -99,7 +117,7 @@ app.delete("/todos/:id", async (req, res) => {
 });
 
 // const port = 5000;
-const port = process.env.PORT || 5000;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

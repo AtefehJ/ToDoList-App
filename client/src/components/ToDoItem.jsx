@@ -7,12 +7,9 @@ function ToDoItem(props) {
 
   const deleteItem = async (id) => {
     try {
-      const deleteTodo = await fetch(
-        `${process.env.REACT_APP_SERVERURL}/todos/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const deleteTodo = await fetch(`/todos/${id}`, {
+        method: "DELETE",
+      });
 
       setItems(items.filter((item) => item.id !== id));
     } catch (err) {
@@ -22,7 +19,7 @@ function ToDoItem(props) {
 
   const getTodos = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_SERVERURL}/todos`);
+      const response = await fetch(`/todos`);
       const myJsonData = await response.json();
       // console.log(myJsonData);
       setItems(myJsonData);

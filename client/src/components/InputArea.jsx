@@ -12,14 +12,14 @@ function InputArea(props) {
     e.preventDefault();
     try {
       const body = { description };
-      const response = await fetch(`${process.env.REACT_APP_SERVERURL}/todos`, {
+      const response = await fetch(`/todos`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
       // console.log(response);
       // setDescription("");
-      window.location = "/";
+      // window.location = "/";
     } catch (err) {
       console.error(err.message);
     }

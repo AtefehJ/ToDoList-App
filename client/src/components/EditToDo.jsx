@@ -8,14 +8,11 @@ function EditToDo(props) {
     e.preventDefault();
     try {
       const body = { description };
-      const response = await fetch(
-        `${process.env.REACT_APP_SERVERURL}/todos/${props.edit.id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
-        }
-      );
+      const response = await fetch(`/todos/${props.edit.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
       // console.log(response);
       window.location = "/";
     } catch (err) {
