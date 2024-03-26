@@ -26,28 +26,39 @@ console.log(path.join(__dirname, "client/build"));
 
 //configure the PostgreSQL connection
 // const db = new Pool({
-//   user: "postgres",
-//   host: "localhost",
-//   database: "todolist",
-//   password: "Eti0912106@",
-//   port: 5432,
+//   user: "*****",
+//   host: "*******",
+//   database: "****",
+//   password: "*****",
+//   port: ******,
 // });
 
-const devConfig = {
-  user: process.env.PG_USER,
-  host: process.env.PG_HOST,
-  password: process.env.PG_PASSWORD,
-  database: process.env.PG_DATABASE,
-  port: process.env.PG_PORT,
-};
+// const devConfig = {
+//   user: process.env.PG_USER,
+//   host: process.env.PG_HOST,
+//   password: process.env.PG_PASSWORD,
+//   database: process.env.PG_DATABASE,
+//   port: process.env.PG_PORT,
+// };
 
+const devConfig = `postgresql://${process.env.PG_USER}:${process.env.PG_PASSWORD}@${process.env.PG_HOST}:${process.env.PG_PORT}/${process.env.PG_DATABASE}`;
+
+/*
 const proConfig = {
   connectionString: process.env.DATABASE_URL, // coming from Heroku add-ons -> connect me to the postgres cloud service
 };
+*/
 
-const db = new Pool(
-  process.env.NODE_ENV === "production" ? proConfig : devConfig
-);
+const proConfig = process.env.DATABASE_URL;
+
+// const db = new Pool(
+//   process.env.NODE_ENV === "production" ? proConfig : devConfig
+// );
+
+const db = new Pool({
+  connectionString:
+    process.env.NODE_ENV === "production" ? proConfig : devConfig,
+});
 
 // db.connect();
 
