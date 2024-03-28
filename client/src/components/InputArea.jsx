@@ -19,7 +19,7 @@ function InputArea(props) {
       });
       // console.log(response);
       // setDescription("");
-      window.location = "/";
+      // window.location = "/";
     } catch (err) {
       console.error(err.message);
     }
