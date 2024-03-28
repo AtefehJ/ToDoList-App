@@ -60,6 +60,19 @@ const db = new Pool({
     process.env.NODE_ENV === "production" ? proConfig : devConfig,
 });
 
+// const db =
+//   process.env.NODE_ENV === "production"
+//     ? new Pool({
+//         connectionString: prodConfig,
+
+//         ssl: {
+//           rejectUnauthorized: false,
+//         },
+//       })
+//     : new Pool({
+//         connectionString: devConfig,
+//       });
+
 // db.connect();
 
 //Routes
