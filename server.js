@@ -49,7 +49,7 @@ const proConfig = {
 };
 */
 
-const proConfig = process.env.DATABASE_URL;
+const proConfig = process.env.DATABASE_URL; // heroku addons
 
 // const db = new Pool(
 //   process.env.NODE_ENV === "production" ? proConfig : devConfig
