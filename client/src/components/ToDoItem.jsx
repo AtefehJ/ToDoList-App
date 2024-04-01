@@ -19,7 +19,7 @@ function ToDoItem(props) {
 
   const getTodos = async () => {
     try {
-      const response = await fetch(`/todos`);
+      const response = await fetch("/todos");
       const myJsonData = await response.json();
       // console.log(myJsonData);
       setItems(myJsonData);

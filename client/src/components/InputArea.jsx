@@ -12,7 +12,7 @@ function InputArea(props) {
     e.preventDefault();
     try {
       const body = { description };
-      const response = await fetch(`/todos`, {
+      const response = await fetch("/todos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
